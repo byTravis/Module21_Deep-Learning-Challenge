@@ -1,10 +1,12 @@
-# Module21_Deep-Learning-Challenge
+# Module 21 - Alphabet Soup Funding Challenge
 Alphabet Soup - Deep Learning Challenge - Week 19 - Data Analytics Boot Camp - University of Oregon
 
-## Background
-The nonprofit foundation Alphabet Soup wants a tool that can help it select the applicants for funding with the best chance of success in their ventures. With machine learning and neural networks, I'm using the features in the provided dataset to create a binary classifier that can predict whether applicants will be successful if funded by Alphabet Soup.
+![Alphabet Soup Funding Challenge](images/project_banner.jpg)
 
-From Alphabet Soup’s business team, I have received a CSV containing more than 34,000 organizations that have received funding from Alphabet Soup over the years. Within this dataset are a number of columns that capture metadata about each organization, such as:
+## Background
+The nonprofit foundation *Alphabet Soup* wants a tool that can help it select the applicants for funding with the best chance of success in their ventures. With machine learning and neural networks, I'm using the features in the provided dataset to create a binary classifier that can predict whether applicants will be successful if funded by *Alphabet Soup*.
+
+From *Alphabet Soup*’s business team, I have received a CSV containing more than 34,000 organizations that have received funding from *Alphabet Soup* over the years. Within this dataset are a number of columns that capture metadata about each organization, such as:
 
 - **EIN** and **NAME—Identification** columns
 - **APPLICATION_TYPE** — Alphabet Soup application type
@@ -18,27 +20,52 @@ From Alphabet Soup’s business team, I have received a CSV containing more than
 - **ASK_AMT** — Funding amount requested
 - **IS_SUCCESSFUL** — Was the money used effectively
 
-# Approach
+## Approach
 
 This project was initially created in [Google Colab Project](https://colab.research.google.com/drive/1oVZ4ZpVErVYIB_9UTXLzWDW00broKoRK?usp=sharing).  A copy has been downloaded to GitHub for easy reference.
 
 
 **Data Preprocessing**
-- I dropped the *EIN* and *NAME—Identification* columns as they have no revelence to what we're evaluating
+- I dropped the *EIN* and *NAME—Identification* columns as they have no relevance to what we're evaluating
 - I reduced the number of values in *APPLICATION_TYPE* and *CLASSIFICATION* by categorizing smaller segments into an "other" label.
 - I expended categorial variables with pd.get_dummies()
-- We're using the *IS_SUCCESSFUL* column as our target for X
-- We kept all of the other datapoints to be evaluated for Y
+- I'm using the *IS_SUCCESSFUL* column as our target for X
+- I kept all of the other datapoints to be evaluated for Y
 - I split the data into training ad testing datasets.
-- I scaled the training and testing features uinsing StandardScaler before fitting it to the model.
+- I scaled the training and testing features using StandardScaler before fitting it to the model.
 
 
 **Compiling, Training & Evaluating**
 
+- I created the first model based on the starter code's outputs.  This gave me a 
+- I'd like to achieve a higher accuracy of 75%, so I created 3 variations in hopes of increasing the accuracy and reducing the loss.
+    - Optimization Attempt 1
+        - Increase number of epochs from 100 to 200
+    - Optimization Attempt 2
+        - Increased nodes in layer one to 3 times the number of columns in dataset.
+        - Increased nodes in layer two to 1/2 the number of nodes as layer one
+    - Optimization Attempt 3
+        - Changed the number of nodes in layer one to 120
+        - Changed the number of nodes in layer two to 90.
+        - Added a third layer with 30 nodes.
+- Manual optimization  didn't provide better results.  I decided to try the Keras Tuner Library to see if can improve the results and see what it suggests for model parameters.
+    - The results from the Keras Tuner had slightly better, however the suggested parameters didn't seem appropriate.
+{'activation': 'relu',
+ 'first_units': 9,
+ 'num_layers': 1,
+ 'units_0': 7,
+ 'units_1': 5,
+ 'units_2': 7,
+ 'units_3': 5,
+ 'units_4': 9,
+ 'units_5': 9,
+ 'tuner/epochs': 7,
+ 'tuner/initial_epoch': 0,
+ 'tuner/bracket': 1,
+ 'tuner/round': 0}
 
 
-Summary
+## Conclusion
+The base model seemed to be the most efficient (__-).  I tried different optimization techniques, including expanding the number of epochs, number of neurons, and the number of hidden layers.  The resulting tweaks to the model resulted in minimal differences, but in general performed slightly poorer.  I decided to run the Keras Tuner Library to see if I could improve my results and see what is suggested for settings.  However, the results of that test returned parameters that didn't seem appropriate.  Specifically, It suggested a single hidden layer with only 9 nodes, even though we have 44 columns of data we were looking at.  I don't think we can move the needle toward the 75% accuracy goal without increasing our data, or perhaps amending our approach on appropriate data to train our model.
 
 
-
-# Result
