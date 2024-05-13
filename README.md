@@ -39,12 +39,12 @@ This project was initially created in [Google Colab Project](https://colab.resea
 
 - I created the first model based on the starter code's outputs.  (Loss: 0.55914705991745, Accuracy: 0.7302623987197876)
 - I'd like to achieve a higher accuracy of 75%, so I created 3 variations in hopes of increasing the accuracy and reducing the loss.
-    - Optimization Attempt 1 (Loss: 0.5743629932403564, Accuracy: 0.728396475315094)
+    - *Optimization Attempt 1* (Loss: 0.5743629932403564, Accuracy: 0.728396475315094)
         - Increase number of epochs from 100 to 200
-    - Optimization Attempt 2 (0.566865861415863, Accuracy: 0.728863000869751)
+    - *Optimization Attempt 2* (Loss: 0.566865861415863, Accuracy: 0.728863000869751)
         - Increased nodes in layer one to 3 times the number of columns in dataset.
         - Increased nodes in layer two to 1/2 the number of nodes as layer one
-    - Optimization Attempt 3 (Loss: 0.580244243144989, Accuracy: 0.7292128205299377)
+    - *Optimization Attempt 3* (Loss: 0.580244243144989, Accuracy: 0.7292128205299377)
         - Changed the number of nodes in layer one to 120
         - Changed the number of nodes in layer two to 90.
         - Added a third layer with 30 nodes.
