@@ -49,7 +49,7 @@ This project was initially created in [Google Colab Project](https://colab.resea
         - Changed the number of nodes in layer two to 90.
         - Added a third layer with 30 nodes.
 
-![Model Results](images/model-results.JPGmodel-results.JPG)
+![Model Results](images/model-results.JPG)
 
 - Manual optimization  didn't provide better results.  I decided to try the Keras Tuner Library to see if can improve the results and see what it suggests for model parameters.
     - The results from the Keras Tuner had slightly better, however the suggested parameters didn't seem appropriate.
