@@ -37,35 +37,27 @@ This project was initially created in [Google Colab Project](https://colab.resea
 
 **Compiling, Training & Evaluating**
 
-- I created the first model based on the starter code's outputs.  This gave me a 
+- I created the first model based on the starter code's outputs.  (Loss: 0.55914705991745, Accuracy: 0.7302623987197876)
 - I'd like to achieve a higher accuracy of 75%, so I created 3 variations in hopes of increasing the accuracy and reducing the loss.
-    - Optimization Attempt 1
+    - Optimization Attempt 1 (Loss: 0.5743629932403564, Accuracy: 0.728396475315094)
         - Increase number of epochs from 100 to 200
-    - Optimization Attempt 2
+    - Optimization Attempt 2 (0.566865861415863, Accuracy: 0.728863000869751)
         - Increased nodes in layer one to 3 times the number of columns in dataset.
         - Increased nodes in layer two to 1/2 the number of nodes as layer one
-    - Optimization Attempt 3
+    - Optimization Attempt 3 (Loss: 0.580244243144989, Accuracy: 0.7292128205299377)
         - Changed the number of nodes in layer one to 120
         - Changed the number of nodes in layer two to 90.
         - Added a third layer with 30 nodes.
+
+![Model Results](images/model-results.JPGmodel-results.JPG)
+
 - Manual optimization  didn't provide better results.  I decided to try the Keras Tuner Library to see if can improve the results and see what it suggests for model parameters.
     - The results from the Keras Tuner had slightly better, however the suggested parameters didn't seem appropriate.
-{'activation': 'relu',
- 'first_units': 9,
- 'num_layers': 1,
- 'units_0': 7,
- 'units_1': 5,
- 'units_2': 7,
- 'units_3': 5,
- 'units_4': 9,
- 'units_5': 9,
- 'tuner/epochs': 7,
- 'tuner/initial_epoch': 0,
- 'tuner/bracket': 1,
- 'tuner/round': 0}
+    - ![Keras Tuner Results](images/keras-turner.JPG)
+
 
 
 ## Conclusion
-The base model seemed to be the most efficient (__-).  I tried different optimization techniques, including expanding the number of epochs, number of neurons, and the number of hidden layers.  The resulting tweaks to the model resulted in minimal differences, but in general performed slightly poorer.  I decided to run the Keras Tuner Library to see if I could improve my results and see what is suggested for settings.  However, the results of that test returned parameters that didn't seem appropriate.  Specifically, It suggested a single hidden layer with only 9 nodes, even though we have 44 columns of data we were looking at.  I don't think we can move the needle toward the 75% accuracy goal without increasing our data, or perhaps amending our approach on appropriate data to train our model.
+The base model seemed to be the most efficient (Loss: 0.55914705991745, Accuracy: 0.7302623987197876).  I tried different optimization techniques, including expanding the number of epochs, number of neurons, and the number of hidden layers.  The resulting tweaks to the model resulted in minimal differences, but in general performed slightly poorer.  I decided to run the Keras Tuner Library to see if I could improve my results and see what is suggested for settings.  However, the results of that test returned parameters that didn't seem appropriate.  Specifically, it suggested Tanh function.  It also suggested a 2 hidden layers with only 9 nodes, even though we have 44 columns of data.  There was only a slight improvement in the score (Loss: 0.5527703166007996, Accuracy: 0.7346938848495483), so I opted to keep my original model.  With the tests I have run, I concluded that it is unlikely we can move the needle toward the 75% accuracy goal with our current dataset.  Perhaps increasing our data or amending our approach on appropriate data to train our model may improve our results.
 
 
